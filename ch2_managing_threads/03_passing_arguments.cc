@@ -64,7 +64,7 @@ int main() {
 
     // 如果传给 f 的参数是指针类型，这一过程会产生重大影响
     // thread 的构造函数原样复制所提供的值，在新线程调用 f 时才会将 buffer 转换成 string 类型
-    // 而此时函数 oops 可能已经推出，导致局部数组被销毁
+    // 而此时函数 oops 可能已经退出，导致局部数组被销毁
     // 在 m1 pro mbp 上进行试验，最终 f 只输出了大约 720 个字符 'a'，而不是 1023 个
     oops(1023);
     this_thread::sleep_for(chrono::milliseconds(10));
@@ -73,7 +73,8 @@ int main() {
     not_oops(1023);
     this_thread::sleep_for(chrono::milliseconds(10));
 
-    // 如果参数是非常量引用，直接传递会报错，因为不能将右值赋值给非常量引用
+    // 为了应对 move-only 类型，线程库的内部代码会把参数副本（位于新线程的内部存储空间）以右值的形式传递
+    // 此时如果参数是非常量引用，直接传递会报错，因为不能将右值赋值给非常量引用
     // oops_again();
     // 需要使用 std::ref 进行包装
     not_oops_again();
