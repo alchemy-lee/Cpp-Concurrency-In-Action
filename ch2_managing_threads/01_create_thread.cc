@@ -19,9 +19,9 @@ struct func {
         for(unsigned j=0;j<1000000;++j) {
             // 可能访问悬空引用
             ++i;
-            // if (i % 10000 == 0) {
-            //     std::cout << i << std::endl;
-            // }
+            if (i % 1000 == 0) {
+                std::cout << i << std::endl;
+            }
         }
     }
 };
@@ -63,5 +63,6 @@ int main() {
     // 分离后的线程可能在线程对象销毁之后还在继续运行，它只有在线程函数返回之后才停止运行
     // 如果不等待线程结束，则需要确保线程访问的数据直到线程结束之前都是有效的
     oops();
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
     // 解决方案：令线程函数自包含，将数据复制到新线程内部
 }
