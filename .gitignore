@@ -1,3 +1,5 @@
 */*.out
 /.idea/*
 /**/build/
+/.cache/*
+/**/.DS_Store

@@ -4,6 +4,8 @@ project(cpp_concurrency)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
+
 
 add_subdirectory(ch02_managing_threads)
 
