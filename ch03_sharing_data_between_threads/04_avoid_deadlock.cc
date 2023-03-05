@@ -54,8 +54,8 @@ public:
         if (&lhs == &rhs) {
             return;
         }
-        // C++17 还进一步提供了新的RAII类模板 std::scoped_lock<>
-        // std:: scoped_lock<> 和 std::lock_guard<>完全等价，只不过
+        // C++17 还进一步提供了新的 RAII 类模板 std::scoped_lock<>
+        // std:: scoped_lock<> 和 std::lock_guard<> 完全等价，只不过
         // 前者是可变参数模板（variadic template），接收各种互斥型别作为
         // 模板参数列表，还以多个互斥对象作为构造函数的参数列表
         scoped_lock guard(lhs.m, rhs.m);
