@@ -1,0 +1,5 @@
+project(ch4)
+
+add_executable(04_01_condition_variable 01_condition_variable.cc)
+
+add_executable(04_02_threadsafe_queue 02_threadsafe_queue.cc threadsafe_queue.h)
