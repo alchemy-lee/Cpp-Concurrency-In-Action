@@ -8,7 +8,7 @@ private:
     condition_variable data_cond;
 
 public:
-    threadsafe_queue() {}
+    threadsafe_queue() = default;
 
     threadsafe_queue(const threadsafe_queue& other) {
         lock_guard<mutex> lk(other.m);
